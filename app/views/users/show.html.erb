@@ -1,0 +1,39 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<ul>
+	<li>
+		<%= link_to user_path(@user) do %>
+			<div class="text">投稿数</div>
+			<div class="num"><%= @user.articles.count %></div>
+		<% end %>
+	</li>
+	<li>
+		<%= link_to follows_user_path(@user) do %>
+			<div class="text">フォロー</div>
+			<div class="num"><%= @user.followings.count %></div>
+		<% end %>
+	</li>
+	<li>
+		<%= link_to followers_user_path(@user) do %>
+			<div class="text">フォロワー</div>
+			<div class="num"><%= @user.followers.count %></div>
+		<% end %>
+	</li>
+	<li>
+		<%= link_to favorites_user_path(@user) do %>
+			<div class="text">いいね一覧</div>
+			<div class="num"><%= @user.favorites.count %></div>
+		<% end %>
+	</li>
+</ul>
+
+<% @user.articles.each do |article| %>
+	<h4 class="user">
+		<span class="user-name">
+			<%= link_to article.user.email, user_path(article.user) %>
+		</span>
+		<span class="user-id"><%= article.user.email %></span>
+	</h4>
+	<div class="post-body"><%= article.body %></div>
+<% end %>

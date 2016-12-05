@@ -1,0 +1,17 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+
+<% @users.each do |u| %>
+	<div>
+		<%= link_to u.name, user_path(u) %>
+		<span>@<%= u.name %></span>
+	</div>
+	<div class="bio"><%= u.bio %></div>
+	<div class="follow-unfollow">
+		<% if u.followed_by? current_user %>
+			<%= link_to "フォロー解除", user_relationships_path(u), method: :delete %>
+		<% else %>
+			<%= link_to "フォロー", user_relationships_path(u), method: :article %>
+		<% end %>
+	</div>
+<% end %>

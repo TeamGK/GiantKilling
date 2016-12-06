@@ -6,9 +6,40 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
+  <strong>内容:</strong>
   <%= @article.body %>
 </p>
+
+<h2>コメント</h2>
+<% @article.comments.each do |comment| %>
+
+<p>
+	<strong>コメンター</strong>
+	<%= comment.commenter %>
+</p>
+<p>
+	<strong>コメント</strong>
+	<%= simple_format comment.body %>
+</p>
+<% end %>
+
+<h2>コメントを追加</h2>
+<%= form_for( [@article, @article.comments.build] ) do |f| %>
+<p>
+	<% f.label :commenter, "コメンター" %><br>
+	<% f.text_field :commenter %>
+</p>
+
+<p>
+	<% f.label :body, "コメント" %><br>
+	<% f.text_area :body, cols: 60, rows: 8 %>
+</p>
+
+<p>
+	<% f.submit, "コメント投稿" %>
+</p>
+
+<% end %>
 
 <% if current_user.id == @article.user.id %>
 	<%= link_to 'Edit', edit_article_path(@article) %> |

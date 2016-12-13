@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205161555) do
+ActiveRecord::Schema.define(version: 20161210070706) do
 
   create_table "articles", force: :cascade do |t|
+    t.string   "shop"
+    t.text     "description"
     t.string   "title"
-    t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "image"
   end
@@ -28,11 +29,10 @@ ActiveRecord::Schema.define(version: 20161205161555) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "commenter"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -74,6 +74,20 @@ ActiveRecord::Schema.define(version: 20161205161555) do
     t.string   "title"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "age"
+    t.integer  "sex"
+    t.string   "job"
+    t.string   "hobby"
+    t.string   "name"
+    t.string   "height"
+    t.string   "weight"
+    t.text     "introduction"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "relationships", force: :cascade do |t|

@@ -10,7 +10,7 @@ class RelationshipsController < ApplicationController
 			redirect_to articles_url, alert: "フォローできません"
 		end
 	end
-S
+
 	def destroy
 		@user = User.find(params[:user_id])
 		follow = current_user.relationships.find_by!(following_id: @user.id)

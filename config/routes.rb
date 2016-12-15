@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   	resource :favorites, only: [:create, :destroy]
   	resource :comments
   end
-  	root 'articles#index'
+  resource :profiles, only: [:show]
+  root 'articles#index'
 end

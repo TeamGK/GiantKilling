@@ -4,6 +4,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.string :shop
       t.text :description
       t.string :title
+      
 
       t.timestamps
     end

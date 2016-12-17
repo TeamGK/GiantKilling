@@ -13,11 +13,10 @@
 ActiveRecord::Schema.define(version: 20161210070706) do
 
   create_table "articles", force: :cascade do |t|
-    t.string   "shop"
-    t.text     "description"
     t.string   "title"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.string   "image"
   end
@@ -29,10 +28,11 @@ ActiveRecord::Schema.define(version: 20161210070706) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "commenter"
-    t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "favorites", force: :cascade do |t|

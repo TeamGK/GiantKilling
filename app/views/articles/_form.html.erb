@@ -26,12 +26,15 @@
     <%= f.file_field :image %>
   </div>
 
+  <br>
+
   <div class="field">
-    <%= f.label :interest_list, "興味・関心 （ カンマ区切り ） " %><br>
+    <%= f.label :interest_list, "テーマ" %>
     <%= text_field_tag 'post[interest_list]', @article.interest_list.join(',') %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
+    redirect_to 
   </div>
 <% end %>

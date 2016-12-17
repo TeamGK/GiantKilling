@@ -18,4 +18,12 @@ class UsersController < ApplicationController
   def followews
   	@user = User.find(params[:id])
   end
+
+  def search
+    
+  end
+
+  def answer
+    
+  end
 end

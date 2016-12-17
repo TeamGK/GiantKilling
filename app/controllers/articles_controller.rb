@@ -17,11 +17,13 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
-    redirect_to "/registrationresult"
   end
 
   # GET /articles/1/edit
   def edit
+  end
+
+  def registrationresult
   end
 
   # POST /articles
@@ -32,7 +34,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to articles_url, notice: 'Article was successfully created.' }
+        format.html { redirect_to registrationresult_url, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         @articles = Article.all
@@ -74,7 +76,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :user_id, :image, :interest_list)
+      params.require(:article).permit(:title, :body, :user_id, :image, :interest_list, :situation_list)
     end
 
     def correct_user

@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resource :profiles, only: [:show]
   root 'articles#index'
+  get "/registrationresult" => "articles#registrationresult"
 end

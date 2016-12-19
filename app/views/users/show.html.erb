@@ -11,7 +11,7 @@
 	<li>
 		<%= link_to follows_user_path(@user) do %>
 			<div class="text">フォロー</div>
-			<div class="num"><%= @user.followings.count %></div>
+			<div class="num"><%= @user.relationships.count %></div>
 		<% end %>
 	</li>
 	<li>

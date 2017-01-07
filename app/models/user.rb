@@ -13,4 +13,14 @@ class User < ApplicationRecord
 		inverse_follows.where(follower_id: user.id).exists?
 	end
 
+	enum sex: { "男"=>0, "女"=>1 }
+
+	def self.ransackable_attributes auth_object = nil
+		%w(sex age)
+	end
+
+	def self.ransackable_association auth_object = nil
+		%w(sex age)
+	end
+
 end

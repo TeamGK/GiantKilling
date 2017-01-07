@@ -13,4 +13,9 @@ class Article < ApplicationRecord
 	end
 
 	acts_as_ordered_taggable_on :situations
+
+	include ActiveModel::Model
+
+	attr_accessor :sex_id
+	
 end

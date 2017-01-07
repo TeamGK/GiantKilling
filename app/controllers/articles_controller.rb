@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.page(params[:page]).per(2)
+    @articles = Article.page(params[:page]).per(10)
   end
 
   # GET /articles/1
@@ -24,6 +24,24 @@ class ArticlesController < ApplicationController
   end
 
   def registrationresult
+  end
+
+  def serach
+    # @form = Search.new(params.require(:serach))
+    # @users = User.all
+    @q = User.search(params[:q])
+    @users = @q.result(distinct: true)
+  end
+
+  def result
+    @sex = params[:sex]
+    @age = params[:age]
+    @results = Result.all
+        @results = Kaminari.pagenate_arrey(@results).page(params[:page]).per(10)
+  end
+
+  def find
+    @form = Serach.new
   end
 
   # POST /articles
@@ -76,7 +94,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :body, :user_id, :image, :interest_list, :situation_list)
+      params.require(:article).permit(:title, :description, :user_id, :image, :interest_list, :situation_list)
     end
 
     def correct_user

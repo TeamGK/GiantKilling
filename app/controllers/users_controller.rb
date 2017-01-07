@@ -23,7 +23,13 @@ class UsersController < ApplicationController
     
   end
 
-  def answer
-    
+  def searchresult
+    @q = User.search(params[:q])
+    #@users = @q.result(distinct: true)
+    @users=User.all
+    # @sex = params[:sex]
+    # @age = params[:age]
+    # @results = Result.all
+    #     @results = Kaminari.pagenate_arrey(@results).page(params[:page]).per(10)
   end
 end

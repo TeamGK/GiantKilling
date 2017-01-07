@@ -1,0 +1,21 @@
+<h1>検索結果</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>名前</th>
+			<th>性別</th>
+			<th>年齢</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.profile.name %></td>
+				<td><%= user.profile.sex %></td>
+				<td><%= user.profile.age %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

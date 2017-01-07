@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   	resource :favorites, only: [:create, :destroy]
   	resource :comments
   end
-  resource :profiles
+  resources :profiles
   root 'articles#index'
   get "/registrationresult" => "articles#registrationresult"
 end

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @profile = @user.profile
     @articles = @user.articles
   end
 
@@ -12,11 +13,12 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
 
-  def followss
+  def follows
   	@user = User.find(params[:id])
+    
   end
 
-  def followews
+  def followers
   	@user = User.find(params[:id])
   end
 

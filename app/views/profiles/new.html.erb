@@ -6,11 +6,11 @@
   </p>
 
   <p>性別:
-    <%= select_tag :sex,[["男","0"],["女","1"]] %>
-  <select name="sex">
+<!--   <select name="sex">
           <option value="0">男</option>
           <option value="1">女</option>
-  </select>
+  </select> -->
+  <%= f.select :sex, [["男", 0], ["女", 1]] %>
   </p>
 
   <p>職業:

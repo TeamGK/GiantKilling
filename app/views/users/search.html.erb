@@ -1,9 +1,14 @@
 <h1>検索ページ</h1>
 
 <div class="field">
-	<%= f.label :situation_list, "シチュエーション" %>
-	<%= text_field_tag 'article[situation_list]', @article.situation_list.join(',') %>
+	<%= f.label :sex, "性別" %>
+	<%= f.label :age, "年齢"　%>
+	<%= f.submit %>
 </div>
 
-<p>年代</p>
+<div class="field">
+	<%= f.label :situation_list, "シチュエーション" %>
+	<%= text_field_tag 'article[situation_list]', @article.situation_list.join(',') %>
+	<%= submit %>
+</div>
 

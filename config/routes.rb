@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :profiles
   root 'articles#index'
   get "/registrationresult" => "articles#registrationresult"
+  
+  get '/article/search' =>"articles#search"
+  post '/article/search' =>'articles#serchresult'
+  post '/user/search' =>'users#searchresult'
 end

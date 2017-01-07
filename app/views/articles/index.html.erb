@@ -21,7 +21,7 @@
           <td>画像がありません</td>
         <% end %>
         <td><%= link_to article.title, article_path(article) %></td>
-        <td><%= article.body %></td>
+        <td><%= article.title %></td>
         <td><%= render 'articles/tag_list', tag_list: article.interest_list %></td>
         <td>
           <% if article.favorited_by? current_user %>

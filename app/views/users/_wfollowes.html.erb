@@ -1,0 +1,36 @@
+<!-- フォロー人数 -->
+<% @user.inverse_follows.each do |u| %>
+    <div>
+        <%= link_to u user_path(u) %>
+        <span>@<%= u %></span>
+    </div>
+    <div class="bio">
+        <%= u %>
+    </div>
+    <div class="follow-unfollow">
+        <% if u.followed_by? current_user %>
+          <%= link_to "フォロー解除", user_relationships_path(u), method: :delete %>
+        <% else %>
+          <%= link_to "フォロー", user_relationships_path(u), method: :post %>
+        <% end %>
+    </div>
+<% end %>
+
+
+<!-- フォロワー人数 -->
+<% @user.followers.each do |u| %>
+    <div>
+        <%= link_to u.name, user_path(u) %>
+        <span>@<%= u.name %></span>
+    </div>
+    <div class="bio">
+        <%= u.name %>
+    </div>
+    <div class="follow-unfollow">
+        <% if u.followed_by?(current_user) %>
+          <%= link_to "フォロー解除", user_relationships_path(u), method: :delete %>
+        <% else %>
+          <%= link_to "フォロー", user_relationships_path(u), method: :post %>
+        <% end %>
+    </div>
+<% end %>

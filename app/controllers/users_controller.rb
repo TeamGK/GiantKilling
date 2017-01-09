@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def searchresult
     @q = User.search(params[:q])
     #@users = @q.result(distinct: true)
-    @users=User.all
+    @users= @q.result(distinct: true)
     # @sex = params[:sex]
     # @age = params[:age]
     # @results = Result.all

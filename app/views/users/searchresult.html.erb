@@ -4,8 +4,8 @@
 	<thead>
 		<tr>
 			<th>名前</th>
-			<th>性別</th>
-			<th>年齢</th>
+			<th><%= sort_link(@q, :sex) %></th>
+			<th><%= sort_link(@q, :age, default_order: :desc) %></th>
 		</tr>
 	</thead>
 

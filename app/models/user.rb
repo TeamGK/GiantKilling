@@ -21,7 +21,7 @@ class User < ApplicationRecord
 	end
 
 	def self.ransackable_association auth_object = nil
-		%w(sex age)
+		%w(user)
 	end
 
 end

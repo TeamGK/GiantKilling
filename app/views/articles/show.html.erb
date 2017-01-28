@@ -1,34 +1,60 @@
-<p id="notice"><%= notice %></p>
-<%= @article.user %>
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div class="container">
+  <div class="row">
+      <h1>記事の詳細</h1>
+    <div class="panel panel-default">
 
-<p>
-  <strong>内容:</strong>
-  <%= @article.description %>
-</p>
+    <div class="panel-heading">
+      <h5 class="panel-title"><strong>Title:</strong></h5>
+        <%= @article.title %>
+    </div>
+
+    <div class="panel-body">
+      <% if @article.image? %>
+        <%= image_tag @article.image.url %>
+      <% end -%>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>名前:</strong>
+        <%= @article.user.name %>
+      </li>
+    </ul>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>内容:</strong>
+        <%= @article.description %>
+      </li>
+    </ul>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>この記事に対するコメント</h2>
+      </div>
+      <div class="panel-body">
+      <% @article.comments.each do |comment| %>
+        <li><%= comment.body %><li>
+      <% end -%>
+      </div>
+    </div>
+
+  <h2>コメントを追加</h2>
+  <%= form_for(@comment,url: article_comments_path(@article)) do |f|%>
 
 
+    <div class="form-group">
+    	<%= label :body, "コメント" %><br>
+    	<%= f.text_area :body, class: "form-control" %>
+    </div>
 
-<h2>コメントを追加</h2>
-<%= form_tag(@comment) do %>
-<p>
-	<%= label :commenter, "コメンター" %><br>
-	<%= text_field_tag :commenter %>
-</p>
 
-<p>
-	<%= label :body, "コメント" %><br>
-	<%= text_area_tag :description %>
-</p>
+    	<%= f.submit "コメント投稿", class: "btn btn-success" %>
 
-<p>
-	<%= submit_tag "コメント投稿" %>
-</p>
-
-<% end %>
+  </div>
+  <% end %>
+  </div>
+</div>
 
 <% if current_user.id == @article.user.id %>
 	<%= link_to 'Edit', edit_article_path(@article) %> |

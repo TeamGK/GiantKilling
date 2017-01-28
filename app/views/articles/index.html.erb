@@ -1,49 +1,37 @@
-<p id="notice"><%= notice %></p>
-
 <h1>投稿一覧</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>画像</th>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <% if article.image? %>
-          <td><%= image_tag article.image.url %></td>
-        <% else %>
-          <td>画像がありません</td>
-        <% end %>
-        <td><%= link_to article.title, article_path(article) %></td>
-        <td><%= article.title %></td>
-        <td><%= render 'articles/tag_list', tag_list: article.interest_list %></td>
-        <td>
+  <div class="row">
+    <% @search_articles.each do |article| %>
+      <div class="col-lg-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5 class="panel-title">タイトル：<%= link_to article.title, article_path(article) %></h5>
+        </div>
+        <div class="panel-body">
+          <% if article.image? %>
+            <%= link_to image_tag(article.image.url), article_path(article) %>
+          <% end %>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">お店：<%= article.shop %></li>
+          <li class="list-group-item">説明：<%= article.description %></li>
+        </ul>
+            <div class="panel-footer">
           <% if article.favorited_by? current_user %>
-            <%= link_to "いいね解除", article_favorites_path(article), method: :delete %>
+              <li><%= link_to "いいね解除", article_favorites_path(article), method: :delete %></li>
           <% else %>
-            <%= link_to "いいね", article_favorites_path(article), method: :article %>
+              <li><%= link_to "いいね", article_favorites_path(article), method: :post %></li>
           <% end %>
-        </td>
-        <td>
           <% if article.user.followed_by? current_user %>
-            <%= link_to "フォロー解除", user_relationships_path(article.user), method: :delete %>
+              <li><%= link_to "フォロー解除", user_relationships_path(article.user), method: :delete %></li>
           <% else %>
-            <%= link_to "フォロー",user_relationships_path(article.user), method: :article %>
+              <li><%= link_to "フォロー",user_relationships_path(article.user), method: :article %></li>
           <% end %>
-        </td>
-      </tr>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<%= paginate @articles %>
+  </div>
+<li><%= paginate @articles %></li>
 <br>
-
-<li><%= link_to "会員ページ", profiles_path %></li>
 
 <%= link_to 'New Article', new_article_path %>

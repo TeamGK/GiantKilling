@@ -4,17 +4,12 @@
 
 	<div class="field">
 		<%= f.label :sex, "性別" %>
-		<%= f.label :age, "年齢"　%>
+		<%= f.search_field :name %>
+		<br/>
+		<%= f.label :age, "年齢" %>
+		<%= f.search_field :email %>
 		<%= f.submit %>
+
 	</div>
 
 <% end %>
-
-
-
-	<div class="field">
-		<%= f.label :situation_list, "シチュエーション" %>
-		<%= text_field_tag 'article[situation_list]', @article.situation_list.join(',') %>
-		<%= submit %>
-	</div>
-

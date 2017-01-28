@@ -1,0 +1,7 @@
+<h1>会員一覧</h1>
+
+<% @profiles.each do |profile| %>
+<ul class="list-group">
+  <li class="list-group-item">会員の名前：<%= link_to profile.user.name, profile_path(profile.id) %></li>
+</ul>
+<% end %>

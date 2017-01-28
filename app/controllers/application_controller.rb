@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+before_filter :set_search
+
+def set_search
+  #@search = Article.search(params[:q])
+  @search = Article.ransack(params[:q]) #ransackメソッド推奨
+  @search_articles = @search.result.page(params[:page]).per(5).order(created_at: :desc)
+end
 
   protected
 

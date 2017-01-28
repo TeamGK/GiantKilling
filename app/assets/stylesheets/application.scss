@@ -14,5 +14,24 @@
  *= require_self
  */
 
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+ul, li {
+  list-style-type: none;
+}
+
+body {
+  padding-top: 55px;
+}
+
+.container-fluid {
+  padding-top: 40px;
+  // 背景画像を暗くする
+  background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05) ), url(ozpakimyou.jpg);
+  background-size: cover;
+  // 背景画像の位置を決める
+  background-position: 50% 50%;
+  height: 600px;
+  // width: 100%;
+}

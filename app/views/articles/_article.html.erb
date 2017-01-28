@@ -1,0 +1,33 @@
+  <div class="row">
+    <% @articles.each do |article| %>
+      <div class="col-lg-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5 class="panel-title">タイトル：<%= link_to article.title, article_path(article) %></h5>
+          </div>
+          <div class="panel-body">
+            <% if article.image? %>
+              <%= link_to image_tag(article.image.url), article_path(article) %>
+            <% end %>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">お店：<%= article.shop %></li>
+            <li class="list-group-item">説明：<%= article.description %></li>
+          </ul>
+              <div class="panel-footer">
+            <% if article.favorited_by? current_user %>
+                <li><%= link_to "いいね解除", article_favorites_path(article), method: :delete %></li>
+            <% else %>
+                <li><%= link_to "いいね", article_favorites_path(article), method: :post %></li>
+            <% end %>
+            <% if article.user.followed_by? current_user %>
+                <li><%= link_to "フォロー解除", user_relationships_path(article.user), method: :delete %></li>
+            <% else %>
+                <li><%= link_to "フォロー",user_relationships_path(article.user), method: :article %></li>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<li><%= paginate @articles %></li>

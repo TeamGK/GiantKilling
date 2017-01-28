@@ -1,45 +1,15 @@
-<div class="panel panel-default">
-	<div class="panel-default">
-		<div class="panel-title">検索ページ</div>
-	</div>
-	<div class="panel-body">
-		<%= form_tag(user_search_path, method: "post") do %>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<%= label :user, :age, "年齢" %>
-						<%= text_field :age, class: "form-control", placeholder: "年代" %>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<%= label :user, :sex, "性別" %>
-						<%= select_tag :sex, options_for_select(User.sexes), include_blank: true %>
-						<!-- <%= text_field :sex, class: "form-control", placeholder: "部分" %> -->
-					</div>
-				</div>
-			</div>
-			<%= submit_tag "検索", class: "btn btn-primary" %>
-			<%= link_to "クリア", url_for, class: "btn btn-default" %>
-		<% end %>
+<h1>服検索ページ</h1>
 
-		<%#= fome_tag do %>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<%#= label :situation_list, "シチュエーション" %>
-						<%#= text_field_tag 'article[situation_list]', @article.situation_list.join(',') %>
-						<%#= submit_tag "検索" %>
-					</div>
-				</div>
-			</div>
-		<%# end %>
-	</div>
-</div>
+<%= search_form_for @q do |f| %>
 
-<!-- 以下はsearchresult.html.erbへ記載 -->
-<!-- <dir class="row">
-	<div class="col-sm-12">
-		<%#= paginate @users %>
-	</div>
-</dir> -->
+  <div class="field">
+    <%= f.label :shop %>
+    <%= f.search_field :shop_start %>
+    <br/>
+    <%= f.label :title %>
+    <%= f.search_field :title_start %>
+    <%= f.submit %>
+
+  </div>
+
+<% end %>

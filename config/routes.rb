@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/top'
+
   devise_for :users
   resources :users, only: [:index, :edit, :update, :show] do
   	resource :relationships, only: [:create, :destroy]
@@ -8,13 +10,14 @@ Rails.application.routes.draw do
   end
   resources :articles do
   	resource :favorites, only: [:create, :destroy]
-  	resource :comments
+  	resources :comments
   end
   resources :profiles
-  root 'articles#index'
+  # root 'articles#index'
+  root to: "home#top"
   get "/registrationresult" => "articles#registrationresult"
-  
+  get '/search' => "profiles#search"
   get '/article/search' =>"articles#search"
-  post '/article/search' =>'articles#serchresult'
-  post '/user/search' =>'users#searchresult'
+  # post '/article/search' =>'articles#serchresult'
+  # post '/user/search' =>'users#searchresult'
 end

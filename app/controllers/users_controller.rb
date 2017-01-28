@@ -4,9 +4,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @profile = Profile.find(params[:id])
   	@user = User.find(params[:id])
+    @profile = Profile.find(params[:id])
     @profile = @user.profile
-    @articles = @user.articles
+    # @profile.user_id = current_user.id
+    @articles = @user.articles.page(params[:page]).per(5)
   end
 
   def favorites
@@ -22,17 +25,19 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   end
 
-  def search
-    
-  end
+  # def search
+  #   @q = User.search(params[:q])
+  #   @users = @q.result(distinct: true)
+  # end
 
-  def searchresult
-    @q = User.search(params[:q])
-    #@users = @q.result(distinct: true)
-    @users= @q.result(distinct: true)
-    # @sex = params[:sex]
-    # @age = params[:age]
-    # @results = Result.all
-    #     @results = Kaminari.pagenate_arrey(@results).page(params[:page]).per(10)
-  end
+  # def searchresult
+  #   @q = User.search(params[:q])
+  #   @users = @q.result(distinct: true)
+  #   #@users = @q.result(distinct: true)
+
+  #   # @sex = params[:sex]
+  #   # @age = params[:age]
+  #   # @results = Result.all
+  #   #     @results = Kaminari.pagenate_arrey(@results).page(params[:page]).per(10)
+  # end
 end

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def show
     # @profile = Profile.find(params[:id])
   	@user = User.find(params[:id])
-    @profile = Profile.find(params[:id])
     @profile = @user.profile
     # @profile.user_id = current_user.id
     @articles = @user.articles.page(params[:page]).per(5)

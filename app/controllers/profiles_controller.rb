@@ -4,29 +4,29 @@ class ProfilesController < ApplicationController
   def show
     # @user = User.profile
     # @user.profile_id = @user.id
-    @user = User.find(Profile.find(params[:id]).user_id)
+    # @user = User.find(Profile.find(params[:id]).user_id)
     # @profile.user_id = current_user.id
     # @profiles = @profile.user
   end
 
-  def new
-    @profile = Profile.new
-  end
+  # def new
+  #   @profile = Profile.new
+  # end
 
   def index
     @profiles = Profile.all
   end
 
-  def create
-    #binding.pry
-    @profile = Profile.new(profile_params)
-    @profile.user_id = current_user.id
-    if @profile.save
-      redirect_to profile_path(@profile.id), notice: "登録しました"
-    else
-      render :new
-    end
-  end
+  # def create
+  #   #binding.pry
+  #   @profile = Profile.new(profile_params)
+  #   @profile.user_id = current_user.id
+  #   if @profile.save
+  #     redirect_to profile_path(@profile.id), notice: "登録しました"
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def edit
     @user = User.find(@profile.user_id)

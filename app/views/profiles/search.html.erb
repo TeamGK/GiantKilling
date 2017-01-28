@@ -1,0 +1,15 @@
+<h1>検索ページ</h1>
+
+<%= search_form_for @q do |f| %>
+
+  <div class="field">
+    <%= f.label :sex, "性別" %>
+    <%= f.search_field :sex_start %>
+    <br/>
+    <%= f.label :age, "年齢" %>
+    <%= f.search_field :age_start %>
+    <%= f.submit %>
+
+  </div>
+
+<% end %>

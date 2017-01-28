@@ -1,0 +1,21 @@
+<h1>検索結果</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>名前</th>
+			<th><%= sort_link(@q, :sex) %></th>
+			<th><%= sort_link(@q, :age, default_order: :desc) %></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.profile.name %></td>
+				<td><%= user.profile.sex %></td>
+				<td><%= user.profile.age %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

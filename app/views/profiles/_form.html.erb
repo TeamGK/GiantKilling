@@ -1,0 +1,57 @@
+<div class="form-group">
+    <%= form_for(@profile) do |f| %>
+
+    <div class="field">
+      <p>年齢:
+        <%= f.text_field :age, class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>性別:
+        <%= f.select :sex, [["男", 0], ["女", 1]], class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>職業:
+        <%= f.text_field :job, class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>趣味:
+        <%= f.text_field :hobby, class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>名前:
+        <%= f.text_field :name, class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>身長:
+        <%= f.text_field :height, class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>体重:
+        <%= f.text_field :weight, class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="field">
+      <p>PR文:
+        <%= f.text_area :introduction, class: "form-control" %>
+      </p>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録します", class: "btn btn-primary" %>
+    </div>
+
+    <% end %>
+</div>

@@ -1,0 +1,15 @@
+<h1>服検索ページ</h1>
+
+<%= search_form_for @q do |f| %>
+
+  <div class="field">
+    <%= f.label :shop %>
+    <%= f.search_field :shop_start %>
+    <br/>
+    <%= f.label :title %>
+    <%= f.search_field :title_start %>
+    <%= f.submit %>
+
+  </div>
+
+<% end %>

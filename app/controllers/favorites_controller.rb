@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
 
 	def create
 		@article = Article.find(params[:article_id])
-		@favorite = current_user.favorites.bulid(article: @article)
+		@favorite = current_user.favorites.build(article_id: @article.id)
 
 		if @favorite.save
 			redirect_to articles_url, notice: "お気に入りに登録しました"

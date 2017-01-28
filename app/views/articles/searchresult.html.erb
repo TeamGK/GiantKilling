@@ -1,0 +1,12 @@
+<h1>検索結果</h1>
+
+<% if @model == user %>
+	<p><%= @sex %></p>
+	<p><%= @age %></p>
+	<%= render '/user/index', index: @results %>
+	<%= link_to "会員ページ", profiles_path %>
+<% else %>
+	<%= render '/articles/index', index: @results %>
+<% end %>
+
+<%= link_to 'Back', serach_path %>

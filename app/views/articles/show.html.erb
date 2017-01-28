@@ -1,45 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+      <h1>記事の詳細</h1>
+    <div class="panel panel-default">
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+    <div class="panel-heading">
+      <h5 class="panel-title"><strong>Title:</strong></h5>
+        <%= @article.title %>
+    </div>
 
-<p>
-  <strong>内容:</strong>
-  <%= @article.body %>
-</p>
+    <div class="panel-body">
+      <% if @article.image? %>
+        <%= image_tag @article.image.url %>
+      <% end -%>
+    </div>
 
-<h2>コメント</h2>
-<% @article.comments.each do |comment| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>名前:</strong>
+        <%= @article.user.name %>
+      </li>
+    </ul>
 
-<p>
-	<strong>コメンター</strong>
-	<%= comment.commenter %>
-</p>
-<p>
-	<strong>コメント</strong>
-	<%= simple_format comment.body %>
-</p>
-<% end %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>内容:</strong>
+        <%= @article.description %>
+      </li>
+    </ul>
 
-<h2>コメントを追加</h2>
-<%= form_for( [@article, @article.comments.build] ) do |f| %>
-<p>
-	<% f.label :commenter, "コメンター" %><br>
-	<% f.text_field :commenter %>
-</p>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>この記事に対するコメント</h2>
+      </div>
+      <div class="panel-body">
+      <% @article.comments.each do |comment| %>
+        <li><%= comment.body %><li>
+      <% end -%>
+      </div>
+    </div>
 
-<p>
-	<% f.label :body, "コメント" %><br>
-	<% f.text_area :body, cols: 60, rows: 8 %>
-</p>
+  <h2>コメントを追加</h2>
+  <%= form_for(@comment,url: article_comments_path(@article)) do |f|%>
 
-<p>
-	<% f.submit, "コメント投稿" %>
-</p>
 
-<% end %>
+    <div class="form-group">
+    	<%= label :body, "コメント" %><br>
+    	<%= f.text_area :body, class: "form-control" %>
+    </div>
+
+
+    	<%= f.submit "コメント投稿", class: "btn btn-success" %>
+
+  </div>
+  <% end %>
+  </div>
+</div>
 
 <% if current_user.id == @article.user.id %>
 	<%= link_to 'Edit', edit_article_path(@article) %> |
